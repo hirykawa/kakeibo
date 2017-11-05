@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title', '使いやすい家計簿')
 @section('content')
 
@@ -9,7 +9,7 @@
     <a href="/logout" class="btn btn-lg btn-danger btn-block" type="button">ログアウト</a>
   </div>
   <div class = "col-md-2">
-    <a href="/list" class="btn btn-lg btn-success btn-block" type="button">家計簿を見る</a>
+    <a href="/list" class="btn btn-lg btn-success btn-block" type="button">My家計簿を見る</a>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
 <input type="number" name="price" id="tag_price"class="form-control" data-format="$1 円" placeholder="値段を入力" required>
 <label for="tag_days">購入した日付：</label>
 <input type="date" name="purchased_at" id="tag_days" class="form-control" value="today" required>
-<div class="row">
+<div class="row" style="margin-top: 30px">
     <button class="btn btn-lg btn-primary btn-block" type="submit">送信</button>
 </div>
 </form>

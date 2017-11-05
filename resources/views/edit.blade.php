@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title', 'レシート編集画面')
 @section('content')
 

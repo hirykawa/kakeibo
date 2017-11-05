@@ -11,8 +11,46 @@
     <title>{{ config('app.name', '使いやすい家計簿') }}</title>
 
     <!-- Styles -->
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('dist/css/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/flat-ui.css') }}" rel="stylesheet">
+    {{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">--}}
+    <style>
+        body {
+            /*padding-top: 40px;*/
+            padding-bottom: 40px;
+            /*background-color: #2c3e50;*/
+        }
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="text"] {
+            margin-bottom: 10px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .content{
+            margin-right: 10%;
+            margin-left: 10%;
+        }
+    </style>
 
 </head>
 <body>
@@ -58,7 +96,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            ログアウト
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -72,15 +110,16 @@
                 </div>
             </div>
         </nav>
-
+        <div class="content">
         @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
     <!-- jQuery読み込み -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- BootstrapのJS読み込み -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
+    <script src="{{ asset('dist/js/flat-ui.js') }}"></script>
 </body>
 </html>
