@@ -13,7 +13,7 @@ class GreetingController extends Controller
   public function getIndex() {
     #ログイン中のユーザーidを取得
     $user = Auth::user();
-    return view('greeting', ['message' => $user->name.'さんこんにちは！今日もレシートをつけて行きましょう！']);
+    return view('greeting', ['message' => $user->name.'さんこんにちは！今日もレシートをつけて行きましょう！','result' => '']);
   }
 
 
@@ -32,6 +32,6 @@ class GreetingController extends Controller
   $kakeibo->purchased_at = $purchased_at;
   $kakeibo->created_at = Carbon::now();
   $kakeibo->save();
-  return view('greeting', ['message' => '記入ありがとうございました！']);
+  return view('greeting', ['message' => '記入ありがとうございました！','result' => '記入完了しました!']);
   }
 }
