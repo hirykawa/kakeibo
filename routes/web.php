@@ -19,6 +19,8 @@ Route::post('/list/edit','ListController@Edit')->middleware('auth');
 Route::post('/list/update','ListController@Update')->middleware('auth');
 Route::post('/list/destroy','ListDestroyController@Index')->middleware('auth');
 Route::get('/list', 'ListController@Index')->middleware('auth');
+Route::get('/income', 'IncomeController@Index')->middleware('auth');
+
 // ログアウトしてホームにリダイレクトする。
 Route::get('/logout', function () {
     Auth::logout();
@@ -26,4 +28,4 @@ Route::get('/logout', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
