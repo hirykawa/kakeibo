@@ -16,7 +16,7 @@
 <label for="tag_name">商品名：</label>
 <input type="text" name="title" id="tag_name" class="form-control" value="{{ $data->title }}" placeholder="商品名を入力" required autofocus>
 <label for="tag_price">価格：</label>
-<input type="number" name="price" id="tag_price"class="form-control" value="{{ $data->price }}" data-format="$1 円" placeholder="値段を入力" required>
+<input type="number" name="price" id="tag_price" class="form-control" value="{{ $data->price }}" pattern="[1-9][0-9]*" data-format="$1 円" placeholder="値段を入力" required>
 <label for="tag_days">購入した日付：</label>
 <input type="date" name="purchased_at" id="tag_days" class="form-control" value="{{ $data->purchased_at }}" value="today" required>
 <div class="row">
