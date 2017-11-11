@@ -1,7 +1,7 @@
 @foreach($data as $row)
  <tr>
  <td>{{ $row->title }}</td>
- <td>{{ $row->price }}</td>
+ <td>{{ $row->price }}円</td>
  <td>{{ $row->purchased_at }}</td>
  <td>{{ $row->created_at }}</td>
  <td>{{ $row->updated_at }}</td>
