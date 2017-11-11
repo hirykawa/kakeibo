@@ -19,7 +19,12 @@ Route::post('/list/edit','ListController@Edit')->middleware('auth');
 Route::post('/list/update','ListController@Update')->middleware('auth');
 Route::post('/list/destroy','ListDestroyController@Index')->middleware('auth');
 Route::get('/list', 'ListController@Index')->middleware('auth');
+//収入
 Route::get('/income', 'IncomeController@Index')->middleware('auth');
+Route::post('/income', 'IncomeController@Create')->middleware('auth');
+Route::post('/income/edit','IncomeController@Edit')->middleware('auth');
+Route::post('/income/update','IncomeController@Update')->middleware('auth');
+Route::post('/income/destroy','IncomeController@Destroy')->middleware('auth');
 
 // ログアウトしてホームにリダイレクトする。
 Route::get('/logout', function () {
