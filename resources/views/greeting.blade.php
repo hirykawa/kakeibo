@@ -17,7 +17,8 @@
 </div>
 <div class="row" style="margin-top: 50px">
   <div class="col-sm-3">
-    <h5>今月の合計支出</h5>
+    <h5 class="text-center">今月の合計支出</h5>
+    <canvas id="myChart"></canvas>
   </div>
   <div class="col-sm-6">
     <form class="form-signin" role="form" method="post" action="">
@@ -48,5 +49,20 @@
   </div>
 </div>
 
-
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['支出', 'つかえるお金'],
+            datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db"
+                ],
+                data: [40, 60]
+            }]
+        }
+    });
+</script>
 @endsection
