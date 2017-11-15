@@ -17,8 +17,9 @@
 </div>
 <div class="row" style="margin-top: 50px">
   <div class="col-sm-3">
-    <h5 class="text-center">{{$month}}月の合計支出</h5>
+    <h5 class="text-center">{{date('n')}}月の合計収支</h5>
     <canvas id="myChart"></canvas>
+      <p class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</p>
   </div>
   <div class="col-sm-6">
     <form class="form-signin" role="form" method="post" action="">
@@ -57,11 +58,23 @@
             labels: ['支出', 'つかえるお金'],
             datasets: [{
                 backgroundColor: [
-                    "#2ecc71",
-                    "#3498db"
+                    "#E74C3C",
+                    "#3498DB"
                 ],
-                data: [40, 60]
+                data: [{{$bop['outcome']}}, {{$bop['can_use']}}]
             }]
+        },
+        options: {
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        return data.labels[tooltipItem.index]
+                            + ": "
+                            + data.datasets[0].data[tooltipItem.index]
+                            + " 円"; //ここで単位を付けます
+                    }
+                }
+            }
         }
     });
 </script>
