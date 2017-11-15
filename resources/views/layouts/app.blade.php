@@ -46,9 +46,6 @@
             /*border-bottom-right-radius: 0;*/
             /*border-bottom-left-radius: 0;*/
         /*}*/
-        .form-kakeibo{
-
-        }
         .content{
             margin-right: 10%;
             margin-left: 10%;
