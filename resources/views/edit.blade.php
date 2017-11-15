@@ -2,9 +2,11 @@
 @section('title', 'レシート編集画面')
 @section('content')
 
-{{$message}}
 <div class="row">
-  <div class = "col-md-offset-10 col-md-2">
+    <div class = "col-md-5">
+        {{$message}}
+    </div>
+  <div class = "col-md-offset-5 col-md-2">
     <a href="/list" class="btn btn-lg btn-primary btn-block" type="button">リスト一覧に戻る</a>
   </div>
 </div>

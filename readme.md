@@ -5,6 +5,10 @@
 
 ## Description
 
+シンプルさ
+*分類の種類は5個まで削減
+*
+
 ## Demo
 
 ## Requirement

@@ -2,10 +2,12 @@
 @section('title', '使いやすい家計簿')
 @section('content')
 
-    {{$message}}
 
     <div class="row">
-        <div class="col-md-offset-8 col-md-2">
+        <div class="col-md-5">
+            {{$message}}
+        </div>
+        <div class="col-md-offset-3 col-md-2">
             <a href="/" class="btn btn-lg btn-success btn-block" type="button">TOPに戻る</a>
         </div>
         <div class="col-md-2">
@@ -30,7 +32,6 @@
                             <option value="2" selected="selected">会社　　</option>
                             <option value="3">その他　</option>
                         </select>
-                        {{--<input type="text" name="title" id="tag_name" class="form-control" placeholder="商品名を入力" required autofocus>--}}
                     </div>
                     <div class="form-inline">
                         <label for="tag_price">収入　　：</label>

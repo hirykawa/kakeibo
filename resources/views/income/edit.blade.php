@@ -2,9 +2,11 @@
 @section('title', '収入編集')
 @section('content')
 
-{{$message}}
 <div class="row">
-  <div class = "col-md-offset-10 col-md-2">
+    <div class = "col-md-5">
+        {{$message}}
+    </div>
+  <div class = "col-md-offset-5 col-md-2">
     <a href="/" class="btn btn-lg btn-primary btn-block" type="button">TOPに戻る</a>
   </div>
 </div>
