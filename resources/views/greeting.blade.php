@@ -37,7 +37,7 @@
         </div>
         <div class="form-inline">
           <label for="tag_days">購入日付：</label>
-        <input type="date" name="purchased_at" id="tag_days" class="form-control" value="today" required>
+        <input type="date" name="purchased_at" id="tag_days" class="form-control" value ="@php echo date('Y-m-j'); @endphp" required>
         </div>
         <div class="row" style="margin-top: 30px ;margin-left: auto;margin-right: auto;">
           <button class="btn btn-lg btn-primary" type="submit">送信</button>
