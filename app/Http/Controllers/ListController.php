@@ -16,7 +16,7 @@ class ListController extends Controller
         #kakiboテーブル一覧取得
         $data = App\kakeibo::where('user_id', $user_id)->get();
         # data連想配列に代入&Viewファイルをlist.blade.phpに指定
-        return view('list', ['data' => $data, 'message' => 'ここがレシートの一覧になります。']);
+        return view('list', ['data' => $data, 'message' => 'ここが支出の一覧になります。']);
     }
 
     public function Edit(Request $request)
@@ -25,7 +25,7 @@ class ListController extends Controller
         $id = $request->input('id');
         $data = App\kakeibo::find($id);
         #検索結果をビューに渡す
-        return view('edit', ['data' => $data, 'message' => 'レシートの編集をしましょう']);
+        return view('edit', ['data' => $data, 'message' => '支出の編集をしましょう']);
     }
 
     public function Update(Request $request)

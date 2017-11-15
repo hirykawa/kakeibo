@@ -26,12 +26,14 @@ class GreetingController extends Controller
         $user_id = Auth::id();
         $title = $request->input('title');
         $price = $request->input('price');
+        $detail = $request->input('detail');
         $purchased_at = $request->input('purchased_at');
         $kakeibo = new App\kakeibo();
         $kakeibo->title = $title;
         #user_idを取得
         $kakeibo->user_id = $user_id;
         $kakeibo->price = $price;
+        $kakeibo->detail = $detail;
         $kakeibo->purchased_at = $purchased_at;
         $kakeibo->created_at = Carbon::now();
         $kakeibo->save();
@@ -81,7 +83,6 @@ class GreetingController extends Controller
         }else{
             $bop['can_use'] = $bop['income'] - $bop['outcome'];
         }
-
         return $bop;
     }
 }
