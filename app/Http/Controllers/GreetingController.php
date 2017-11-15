@@ -14,7 +14,11 @@ class GreetingController extends Controller
     {
         #ログイン中のユーザーidを取得
         $user = Auth::user();
-        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日もレシートをつけて行きましょう！', 'result' => '']);
+        $user_id = Auth::id();
+        #今月の収入を取得
+        $total_income = $this->getIncome($user_id);
+        #今月の支出を取得
+        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日もレシートをつけて行きましょう！','month' => $month, 'result' => '']);
     }
 
 
@@ -32,6 +36,23 @@ class GreetingController extends Controller
         $kakeibo->purchased_at = $purchased_at;
         $kakeibo->created_at = Carbon::now();
         $kakeibo->save();
-        return view('greeting', ['message' => '記入ありがとうございました！', 'result' => '記入完了しました!']);
+        #month取得
+        $month = date('n');
+        return view('greeting', ['message' => '記入ありがとうございました！', 'result' => '記入完了しました!','month' => $month]);
+    }
+
+    public function getIncome($user_id){
+        $total_income = 0;
+        $month = date('n');
+        $year = date('Y');
+        $start = Carbon::createFromDate($year, $month, 1);
+        $end = Carbon::createFromDate($year, $month, 31);
+        $total_incomes = App\Income::where('user_id', $user_id)->get();
+        foreach ($total_incomes as $income) {
+            if($income->purchased_at > $start && $income->purchased_at < $end){
+                $total_income += $income->price;
+            }
+        }
+        return $total_income;
     }
 }

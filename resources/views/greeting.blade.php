@@ -17,7 +17,7 @@
 </div>
 <div class="row" style="margin-top: 50px">
   <div class="col-sm-3">
-    <h5 class="text-center">今月の合計支出</h5>
+    <h5 class="text-center">{{$month}}月の合計支出</h5>
     <canvas id="myChart"></canvas>
   </div>
   <div class="col-sm-6">
