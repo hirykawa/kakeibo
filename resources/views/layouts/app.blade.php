@@ -20,35 +20,13 @@
             padding-bottom: 40px;
             /*background-color: #2c3e50;*/
         }
-        /*.form-signin {*/
-            /*max-width: 330px;*/
-            /*padding: 15px;*/
-            /*margin: 0 auto;*/
-        /*}*/
-        /*.form-signin .form-signin-heading,*/
-        /*.form-signin .checkbox {*/
-            /*margin-bottom: 10px;*/
-        /*}*/
-        /*.form-signin .form-control {*/
-            /*position: relative;*/
-            /*height: auto;*/
-            /*-webkit-box-sizing: border-box;*/
-            /*-moz-box-sizing: border-box;*/
-            /*box-sizing: border-box;*/
-            /*padding: 10px;*/
-            /*font-size: 16px;*/
-        /*}*/
-        /*.form-signin .form-control:focus {*/
-            /*z-index: 2;*/
-        /*}*/
-        /*.form-signin input[type="text"] {*/
-            /*margin-bottom: 10px;*/
-            /*border-bottom-right-radius: 0;*/
-            /*border-bottom-left-radius: 0;*/
-        /*}*/
         .content{
             margin-right: 10%;
             margin-left: 10%;
+        }
+        .form-margin{
+            margin-bottom: 10px;
+            width: 170px;
         }
     </style>
     <!-- Scripts -->

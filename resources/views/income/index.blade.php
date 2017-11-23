@@ -27,7 +27,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-inline" style="margin-top: 10px">
                         <label for="tag_name">種類　　：</label>
-                        <select style="width: 170px" class="form-control" id="tag_name" name="title">
+                        <select style="width: 170px" class="form-control form-margin" id="tag_name" name="title">
                             <option value="1">臨時収入</option>
                             <option value="2" selected="selected">会社　　</option>
                             <option value="3">その他　</option>
@@ -35,12 +35,12 @@
                     </div>
                     <div class="form-inline">
                         <label for="tag_price">収入　　：</label>
-                        <input style="width: 170px" type="text" name="price" id="tag_price" class="form-control" data-format="$1 円"
+                        <input style="width: 170px" type="text" name="price" id="tag_price" class="form-control form-margin" data-format="$1 円"
                                pattern="^[1-9][0-9]*$" placeholder="値段を入力" required>  円
                     </div>
                     <div class="form-inline">
                         <label for="tag_days">受取日付：</label>
-                        <input style="width: 170px" type="date" name="purchased_at" id="tag_days" class="form-control" value ="@php echo date('Y-m-j'); @endphp" required>
+                        <input style="width: 170px" type="date" name="purchased_at" id="tag_days" class="form-control form-margin" value ="@php echo date('Y-m-j'); @endphp" required>
                     </div>
                     <div class="row" style="margin-top: 30px ;margin-left: auto;margin-right: auto;">
                         <button class="btn btn-lg btn-primary" type="submit">送信</button>

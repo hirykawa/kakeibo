@@ -16,7 +16,7 @@
         {{-- CSRF対策 --}}
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <input type="hidden" name="id" value="{{ $data->id }}">
-        <div class="form-inline" style="margin-top: 10px">
+        <div class="form-inline form-margin" style="margin-top: 10px">
             <label for="tag_name">種類　　：</label>
             <select class="form-control" id="tag_name" name="title">
                 @if ($data->title == 1)
@@ -36,11 +36,11 @@
         </div>
         <div class="form-inline">
             <label for="tag_price">金額　　：</label>
-            <input type="text" name="price" id="tag_price" class="form-control" data-format="$1 円" value="{{ $data->price }}" pattern="^[1-9][0-9]*$" placeholder="値段を入力" required>
+            <input type="text" name="price" id="tag_price" class="form-control form-margin" data-format="$1 円" value="{{ $data->price }}" pattern="^[1-9][0-9]*$" placeholder="値段を入力" required>
         </div>
         <div class="form-inline">
             <label for="tag_days">受取日付：</label>
-            <input type="date" name="purchased_at" id="tag_days" class="form-control" value="{{ $data->purchased_at }}" required>
+            <input type="date" name="purchased_at" id="tag_days" class="form-control form-margin" value="{{ $data->purchased_at }}" required>
         </div>
         <div class="row" style="margin-top: 30px ;margin-left: auto;margin-right: auto;">
             <button class="btn btn-lg btn-warning" type="submit">変更する</button>
