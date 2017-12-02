@@ -29,6 +29,11 @@ class GreetingController extends Controller
         $title = $request->input('title');
         $price = $request->input('price');
         $detail = $request->input('detail');
+        if($request->input('needs') == NULL){
+            $needs = 0;
+        }elseif ($request->input('needs') == 1){
+            $needs = 1;
+        }
         $purchased_at = $request->input('purchased_at');
         $kakeibo = new App\kakeibo();
         $kakeibo->title = $title;
@@ -36,6 +41,7 @@ class GreetingController extends Controller
         $kakeibo->user_id = $user_id;
         $kakeibo->price = $price;
         $kakeibo->detail = $detail;
+        $kakeibo->needs = $needs;
         $kakeibo->purchased_at = $purchased_at;
         $kakeibo->created_at = Carbon::now();
         $kakeibo->save();
