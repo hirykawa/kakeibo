@@ -21,7 +21,7 @@
   <div class="col-sm-4">
     <h5 class="text-center">{{date('n')}}月の合計収支</h5>
     <canvas id="inoutChart"></canvas>
-      <p class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</p>
+      <h6 class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</h6>
   </div>
   <div class="col-sm-4">
     <form class="form-signin" role="form" method="post" action="">
@@ -52,18 +52,32 @@
           <label for="tag_name">詳細　　：</label>
           <input type="text" name="detail" id="tag_detail" class="form-control form-margin" placeholder="備考があれば入力してください">
         </div>
-        <div class="row" style="margin-top: 30px ;margin-left: auto;margin-right: auto;">
+        <div class="form-inline">
+          <label for="tag_name">必要　　：</label>
+          <input type="checkbox" name="needs" id="tag_needs" value="1" class="form-control form-margin">
+        </div>
+        <div class="row" style="margin-top: 20px ;margin-left: auto;margin-right: auto;">
           <button class="btn btn-lg btn-primary" type="submit">送信</button>
         </div>
       </div>
     </form>
     </form>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
       <h5 class="text-center">{{date('n')}}月の支出分布</h5>
       <canvas id="outcomeChart"></canvas>
-
   </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h4>今月の無駄遣い率</h4>
+        <h6>支出額の{{$need['parsent']}}%は無駄な出費です</h6>
+        <h6>{{$need['need_outcome_count']+$need['not_need_outcome_count']}}件のうち{{$need['not_need_outcome_count']}}件の出費は無駄です</h6>
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+    </div>
 </div>
 
 <script>

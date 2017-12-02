@@ -16,6 +16,11 @@
  <td>{{ $row->price }}円</td>
  <td>{{ $row->purchased_at }}</td>
  <td>{{ $row->detail }}</td>
+    @if($row->needs == 1)
+        <td>YES</td>
+    @elseif($row->needs == 0)
+        <td>NO</td>
+    @endif
  <td>{{ $row->updated_at }}</td>
  <td>
    <form method="post" action="/list/edit">
