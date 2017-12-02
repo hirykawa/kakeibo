@@ -21,7 +21,7 @@
   <div class="col-sm-4">
     <h5 class="text-center">{{date('n')}}月の合計収支</h5>
     <canvas id="inoutChart"></canvas>
-      <p class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</p>
+      <h6 class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</h6>
   </div>
   <div class="col-sm-4">
     <form class="form-signin" role="form" method="post" action="">
@@ -71,8 +71,8 @@
 <div class="row">
     <div class="col-sm-4">
         <h4>今月の無駄遣い率</h4>
-        <p>支出額の{{$need['parsent']}}%は無駄な出費です</p>
-        <p>{{$need['need_outcome_count']+$need['not_need_outcome_count']}}件のうち{{$need['not_need_outcome_count']}}件の出費は無駄です</p>
+        <h6>支出額の{{$need['parsent']}}%は無駄な出費です</h6>
+        <h6>{{$need['need_outcome_count']+$need['not_need_outcome_count']}}件のうち{{$need['not_need_outcome_count']}}件の出費は無駄です</h6>
     </div>
     <div class="col-sm-4">
     </div>
