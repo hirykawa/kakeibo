@@ -19,7 +19,9 @@ class GreetingController extends Controller
         $bop = $this->balanceOfPayment($user_id);
         #支出の種類ごとを取得
         $outcome = $this->getOutcome($user_id,'title');
-        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日も家計簿をつけて行きましょう！','bop'=>$bop,'outcome' => $outcome, 'result' => '']);
+        #無駄遣いを計算
+        $need = $this->calUseless($user_id,date('n'),date('Y'));
+        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日も家計簿をつけて行きましょう！','bop'=>$bop,'outcome' => $outcome,'need'=>$need, 'result' => '']);
     }
 
     #postでgreeting/indexにアクセスしたときの処理
@@ -49,10 +51,41 @@ class GreetingController extends Controller
         $bop = $this->balanceOfPayment($user_id);
         #支出の種類ごとを取得
         $outcome = $this->getOutcome($user_id,'title');
-        return view('greeting', ['message' => '記入ありがとうございました！','bop'=>$bop,'outcome' => $outcome, 'result' => '記入完了しました!']);
+        #無駄遣いを計算
+        $need = $this->calUseless($user_id,date('n'),date('Y'));
+        return view('greeting', ['message' => '記入ありがとうございました！','bop'=>$bop,'outcome' => $outcome,'need'=>$need, 'result' => '記入完了しました!']);
     }
 
 
+    /*
+     * 無駄遣い計算
+     * */
+    public function calUseless($user_id,$month,$year){
+        $need_outcome = 0;
+        $need_outcome_count = 0;
+        $not_need_outcome = 0;
+        $not_need_outcome_count = 0;
+        $start = Carbon::createFromDate($year, $month, 1);
+        $end = Carbon::createFromDate($year, $month, 31);
+        $total_outcomes = App\kakeibo::where('user_id', $user_id)->get();
+        foreach ($total_outcomes as $outcome) {
+            if($outcome->purchased_at >= $start && $outcome->purchased_at <= $end){
+                if($outcome->needs == 1){
+                    $need_outcome += $outcome->price;
+                    $need_outcome_count += 1;
+                }else{
+                    $not_need_outcome += $outcome->price;
+                    $not_need_outcome_count += 1;
+                }
+            }
+        }
+        $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
+        return ['need_outcome' => $need_outcome,
+                'need_outcome_count'=>$need_outcome_count,
+                'not_need_outcome'=>$not_need_outcome,
+                'not_need_outcome_count'=>$not_need_outcome_count,
+                'parsent'=>$parsent];
+    }
     /*
      *
      * データを扱う関数
@@ -66,7 +99,7 @@ class GreetingController extends Controller
         $end = Carbon::createFromDate($year, $month, 31);
         $total_incomes = App\Income::where('user_id', $user_id)->get();
         foreach ($total_incomes as $income) {
-            if($income->purchased_at > $start && $income->purchased_at < $end){
+            if($income->purchased_at >= $start && $income->purchased_at <= $end){
                 $total_income += $income->price;
             }
         }
@@ -86,14 +119,14 @@ class GreetingController extends Controller
         $total_outcomes = App\kakeibo::where('user_id', $user_id)->get();
         if($total_or_title == 'total'){
             foreach ($total_outcomes as $income) {
-                if($income->purchased_at > $start && $income->purchased_at < $end){
+                if($income->purchased_at >= $start && $income->purchased_at <= $end){
                     $total_outcome += $income->price;
                 }
             }
             return $total_outcome;
         }else if($total_or_title == 'title'){
             foreach ($total_outcomes as $income) {
-                if($income->purchased_at > $start && $income->purchased_at < $end){
+                if($income->purchased_at >= $start && $income->purchased_at <= $end){
                     $outcomes[$income->title] += $income->price;
                 }
             }

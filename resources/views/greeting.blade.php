@@ -63,11 +63,21 @@
     </form>
     </form>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
       <h5 class="text-center">{{date('n')}}月の支出分布</h5>
       <canvas id="outcomeChart"></canvas>
-
   </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h4>今月の無駄遣い率</h4>
+        <p>支出額の{{$need['parsent']}}%は無駄な出費です</p>
+        <p>{{$need['need_outcome_count']+$need['not_need_outcome_count']}}件のうち{{$need['not_need_outcome_count']}}件の出費は無駄です</p>
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+    </div>
 </div>
 
 <script>
