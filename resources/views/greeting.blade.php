@@ -56,7 +56,7 @@
           <label for="tag_name">必要　　：</label>
           <input type="checkbox" name="needs" id="tag_needs" value="1" class="form-control form-margin">
         </div>
-        <div class="row" style="margin-top: 30px ;margin-left: auto;margin-right: auto;">
+        <div class="row" style="margin-top: 20px ;margin-left: auto;margin-right: auto;">
           <button class="btn btn-lg btn-primary" type="submit">送信</button>
         </div>
       </div>

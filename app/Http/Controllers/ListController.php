@@ -36,6 +36,12 @@ class ListController extends Controller
         #POSTされた更新データを受け取る
         $data->title = $request->title;
         $data->price = $request->price;
+        $data->detail = $request->detail;
+        if($request->needs == NULL){
+            $data->needs = 0;
+        }elseif ($request->needs == 1){
+            $data->needs = 1;
+        }
         $data->purchased_at = $request->purchased_at;
         #更新する
         $data->save();
