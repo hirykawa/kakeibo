@@ -112,7 +112,12 @@ class GreetingController extends Controller
                 'parsent'=>$parsent
             ];
         }else{
-            return NULL;
+            return ['need_outcome' => 0,
+                'need_outcome_count'=>0,
+                'not_need_outcome'=>0,
+                'not_need_outcome_count'=>0,
+                'parsent'=>0
+            ];
         }
 
     }

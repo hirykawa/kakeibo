@@ -20,7 +20,11 @@
 <div class="row" style="margin-top: 50px">
   <div class="col-sm-4">
     <h5 class="text-center">{{date('n')}}月の合計収支</h5>
-    <canvas id="inoutChart"></canvas>
+      @if($bop['outcome'] == 0 && $bop['can_use'] == 0)
+          <p class="text-center" style="margin-top: 20%;margin-bottom: 20%">今月の収支がまだ登録されてません</p>
+      @else
+          <canvas id="inoutChart"></canvas>
+      @endif
       <h6 class="text-center">今月は残り<span style="color: #c0392b;">{{$bop['can_use']}}</span>円使えます</h6>
   </div>
   <div class="col-sm-4">
@@ -65,8 +69,13 @@
   </div>
   <div class="col-sm-4">
       <h5 class="text-center">{{date('n')}}月の支出分布</h5>
-      <canvas id="outcomeChart"></canvas>
-      <h6 class="text-center">一番多い出費は<span style="color: #c0392b;">{{config('out_title.'.$outcome['max_key'])}}</span>です</h6>
+      @if($bop['income'] == 0)
+          <p class="text-center" style="margin-top: 20%;margin-bottom: 20%">今月の支出がまだ登録されてません</p>
+          <h6 class="text-center">支出を登録しましょう！</h6>
+      @else
+          <canvas id="outcomeChart"></canvas>
+          <h6 class="text-center">一番多い出費は<span style="color: #c0392b;">{{config('out_title.'.$outcome['max_key'])}}</span>です</h6>
+      @endif
   </div>
 </div>
 <div class="row">
@@ -82,6 +91,7 @@
 </div>
 
 <script>
+    @if($bop['outcome'] != 0 || $bop['can_use'] != 0)
     var ctx = document.getElementById('inoutChart').getContext('2d');
     var inoutChart = new Chart(ctx, {
         type: 'pie',
@@ -108,6 +118,8 @@
             }
         }
     });
+    @endif
+            @if($bop['income'] != 0)
     var occ = document.getElementById('outcomeChart').getContext('2d');
     var outcomeChart = new Chart(occ, {
         type: 'pie',
@@ -138,6 +150,7 @@
             }
         }
     });
+    @endif
     //3つめ
     var line = document.getElementById("line_chart").getContext('2d');
     var line_chart = new Chart(line, {
