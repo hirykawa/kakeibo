@@ -14,28 +14,20 @@
 - グラフを多めに使い、一目で情報を確認可能
 - 支出を入力するときに無駄遣いでなかったかどうか再確認
 
+## 使用しているライブラリ
 
-##使用しているライブラリ
-
-
-###バックエンド
-
+### バックエンド
 
 - [Laravel](http://laravel.jp/)PHPフレームワークの主流として学習コストも少ないことから採用
 
-
-###CSS
-
+### CSS
 
 - [Bootstrap3](https://getbootstrap.com/)最もよく使われるフレームワークとして採用
 - [Flat-UI](http://designmodo.github.io/Flat-UI/)見やすくするためにフラットデザインを採用
 
-
-###JS
-
+### JS
 
 - [Chart.js](http://www.chartjs.org/)きれいなグラフをかんたんにつくれるので採用
-
 
 ## Author
 
