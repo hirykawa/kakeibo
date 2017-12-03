@@ -15,10 +15,21 @@
     <link href="{{ asset('dist/css/flat-ui.css') }}" rel="stylesheet">
     {{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">--}}
     <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
         body {
-            /*padding-top: 40px;*/
-            padding-bottom: 40px;
-            /*background-color: #2c3e50;*/
+            /*padding-bottom: 40px;*/
+            margin-bottom: 50px; /* フッタの下側マージンの高さ */
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px; /* ここでフッタの固定高さを設定 */
+            line-height: 50px; /* ここでテキストを垂直に中央に配置 */
+            background-color: #f5f5f5;
         }
         .content{
             margin-right: 10%;
@@ -98,5 +109,12 @@
         @yield('content')
         </div>
     </div>
+    <!-- フッタ -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Copyright © 2017 Hiryu Kawaguchi All Rights Reserved.</span>
+            <a href="https://www.facebook.com/kawaguchi.hiryu">facebook</a>
+        </div>
+    </footer>
 </body>
 </html>
