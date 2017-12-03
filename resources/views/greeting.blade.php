@@ -69,7 +69,7 @@
   </div>
   <div class="col-sm-4">
       <h5 class="text-center">{{date('n')}}月の支出分布</h5>
-      @if($bop['income'] == 0)
+      @if($bop['outcome'] == 0)
           <p class="text-center" style="margin-top: 20%;margin-bottom: 20%">今月の支出がまだ登録されてません</p>
           <h6 class="text-center">支出を登録しましょう！</h6>
       @else
@@ -119,7 +119,7 @@
         }
     });
     @endif
-            @if($bop['income'] != 0)
+            @if($bop['outcome'] != 0)
     var occ = document.getElementById('outcomeChart').getContext('2d');
     var outcomeChart = new Chart(occ, {
         type: 'pie',
