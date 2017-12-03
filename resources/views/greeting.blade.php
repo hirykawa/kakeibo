@@ -41,7 +41,7 @@
           </select>
         </div>
         <div class="form-inline">
-        <label for="tag_price">価格　　：</label>
+            <label for="tag_price">価格　　：</label>
         <input type="text" name="price" id="tag_price" class="form-control form-margin" data-format="$1 円" pattern="^[1-9][0-9]*$" placeholder="値段を入力" required>  円
         </div>
         <div class="form-inline">
@@ -63,20 +63,21 @@
     </form>
     </form>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-4">
       <h5 class="text-center">{{date('n')}}月の支出分布</h5>
       <canvas id="outcomeChart"></canvas>
+      <h6 class="text-center">一番多い出費は<span style="color: #c0392b;">{{config('out_title.'.$outcome['max_key'])}}</span>です</h6>
   </div>
 </div>
 <div class="row">
     <div class="col-sm-4">
         <h4>今月の無駄遣い率</h4>
-        <h6>支出額の{{$need['parsent']}}%は無駄な出費です</h6>
+        <h6>支出額の<span style="color: #c0392b;">{{$need['parsent']}}%</span>は無駄な出費です</h6>
         <h6>{{$need['need_outcome_count']+$need['not_need_outcome_count']}}件のうち{{$need['not_need_outcome_count']}}件の出費は無駄です</h6>
     </div>
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4">
+    <div class="col-sm-8">
+        <h4>今週の支出推移グラフ</h4>
+        <canvas id="line_chart" style="width:100%;height: auto;"></canvas>
     </div>
 </div>
 
@@ -135,6 +136,43 @@
                     }
                 }
             }
+        }
+    });
+    //3つめ
+    var line = document.getElementById("line_chart").getContext('2d');
+    var line_chart = new Chart(line, {
+        type: 'line',
+        data: {
+            labels: [
+                @foreach($week_outcome as $key => $value)
+                "{{$key}}"
+                ,
+                @endforeach
+            ],
+            datasets: [{
+                label: '支出',
+                lineTension: 0,
+                data: [
+                    @foreach($week_outcome as $key => $value)
+                    {{$value}}
+                    ,
+                    @endforeach
+                ],
+                borderColor: [
+                    "#34495e"
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+            responsive:false
         }
     });
 </script>

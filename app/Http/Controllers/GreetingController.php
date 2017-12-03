@@ -21,7 +21,9 @@ class GreetingController extends Controller
         $outcome = $this->getOutcome($user_id,'title');
         #無駄遣いを計算
         $need = $this->calUseless($user_id,date('n'),date('Y'));
-        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日も家計簿をつけて行きましょう！','bop'=>$bop,'outcome' => $outcome,'need'=>$need, 'result' => '']);
+        #1週間分の結果
+        $week_outcome = $this->outOneweak($user_id,date('j'),date('n'),date('Y'));
+        return view('greeting', ['message' => $user->name . 'さんこんにちは！今日も家計簿をつけて行きましょう！','bop'=>$bop,'outcome' => $outcome,'need'=>$need,'week_outcome'=>$week_outcome, 'result' => '']);
     }
 
     #postでgreeting/indexにアクセスしたときの処理
@@ -56,6 +58,26 @@ class GreetingController extends Controller
         return view('greeting', ['message' => '記入ありがとうございました！','bop'=>$bop,'outcome' => $outcome,'need'=>$need, 'result' => '記入完了しました!']);
     }
 
+    /*
+     * 1週間分の支出
+     * */
+    public function outOneweak($user_id,$days,$month,$year){
+        $week_outcome = array();
+        $end = Carbon::createFromDate($year, $month, $days);
+        $start = $end->copy()->subDays(6);
+        $total_outcomes = App\kakeibo::where('user_id', $user_id)->get();
+        for($i=0; $i<7;$i++){
+            $use_day = $start->copy()->addDay($i);
+            $week_outcome[$use_day->format('m月d日')] = 0;
+        }
+        foreach ($total_outcomes as $outcome) {
+            if($outcome->purchased_at >= $start && $outcome->purchased_at <= $end){
+                $use_day = Carbon::parse($outcome->purchased_at);
+                $week_outcome[$use_day->format('m月d日')] = $outcome->price;
+            }
+        }
+        return $week_outcome;
+    }
 
     /*
      * 無駄遣い計算
@@ -79,12 +101,18 @@ class GreetingController extends Controller
                 }
             }
         }
-        $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
-        return ['need_outcome' => $need_outcome,
+        if($need_outcome+$not_need_outcome != 0){
+            $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
+            return ['need_outcome' => $need_outcome,
                 'need_outcome_count'=>$need_outcome_count,
                 'not_need_outcome'=>$not_need_outcome,
                 'not_need_outcome_count'=>$not_need_outcome_count,
-                'parsent'=>$parsent];
+                'parsent'=>$parsent
+            ];
+        }else{
+            return NULL;
+        }
+
     }
     /*
      *
@@ -130,6 +158,11 @@ class GreetingController extends Controller
                     $outcomes[$income->title] += $income->price;
                 }
             }
+            #最大値のkey
+            $max_value = max($outcomes);
+            $max_key = array_search($max_value,$outcomes);
+            $outcomes['max_value'] = $max_value;
+            $outcomes['max_key'] = $max_key;
             return $outcomes;
         }
 
