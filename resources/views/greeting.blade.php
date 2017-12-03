@@ -46,7 +46,7 @@
         </div>
         <div class="form-inline">
           <label for="tag_days">購入日付：</label>
-        <input type="date" name="purchased_at" id="tag_days" class="form-control form-margin" value ="@php echo date('Y-m-j'); @endphp" required>
+        <input type="date" name="purchased_at" id="tag_days" class="form-control form-margin" value ="@php echo date('Y-m-d'); @endphp" required>
         </div>
         <div class="form-inline">
           <label for="tag_name">詳細　　：</label>

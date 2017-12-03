@@ -55,7 +55,9 @@ class GreetingController extends Controller
         $outcome = $this->getOutcome($user_id,'title');
         #無駄遣いを計算
         $need = $this->calUseless($user_id,date('n'),date('Y'));
-        return view('greeting', ['message' => '記入ありがとうございました！','bop'=>$bop,'outcome' => $outcome,'need'=>$need, 'result' => '記入完了しました!']);
+        #1週間分の結果
+        $week_outcome = $this->outOneweak($user_id,date('j'),date('n'),date('Y'));
+        return view('greeting', ['message' => '記入ありがとうございました！','bop'=>$bop,'outcome' => $outcome,'need'=>$need,'week_outcome'=>$week_outcome, 'result' => '記入完了しました!']);
     }
 
     /*
