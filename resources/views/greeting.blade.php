@@ -41,7 +41,7 @@
           </select>
         </div>
         <div class="form-inline">
-        <label for="tag_price">価格　　：</label>
+            <label for="tag_price">価格　　：</label>
         <input type="text" name="price" id="tag_price" class="form-control form-margin" data-format="$1 円" pattern="^[1-9][0-9]*$" placeholder="値段を入力" required>  円
         </div>
         <div class="form-inline">

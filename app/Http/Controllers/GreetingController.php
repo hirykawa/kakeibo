@@ -101,13 +101,18 @@ class GreetingController extends Controller
                 }
             }
         }
-        $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
-        return ['need_outcome' => $need_outcome,
+        if($need_outcome+$not_need_outcome != 0){
+            $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
+            return ['need_outcome' => $need_outcome,
                 'need_outcome_count'=>$need_outcome_count,
                 'not_need_outcome'=>$not_need_outcome,
                 'not_need_outcome_count'=>$not_need_outcome_count,
                 'parsent'=>$parsent
-        ];
+            ];
+        }else{
+            return NULL;
+        }
+
     }
     /*
      *
