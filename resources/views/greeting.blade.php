@@ -54,14 +54,12 @@
         </div>
         <div class="form-inline">
           <label for="tag_name">詳細　　：</label>
-          <input type="text" name="detail" id="tag_detail" class="form-control form-margin" placeholder="備考があれば入力してください">
+          <input type="text" name="detail" id="tag_detail" class="form-control form-margin" placeholder="備考">
         </div>
         <div class="form-inline">
           <label for="tag_name">必要　　：</label>
           <input type="checkbox" name="needs" id="tag_needs" value="1" class="form-control form-margin">
-        </div>
-        <div class="row" style="margin-left: auto;margin-right: auto;">
-          <button class="btn btn-lg btn-primary" type="submit">送信</button>
+            <button class="btn btn-primary" style="margin-left:100px;" type="submit">送信</button>
         </div>
       </div>
     </form>
