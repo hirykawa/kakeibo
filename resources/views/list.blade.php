@@ -17,8 +17,8 @@
  <th>種類<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('title')" aria-hidden="true">降順</span></th>
  <th>値段<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('price')" aria-hidden="true">降順</span></th>
  <th>購入日<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('purchased_at')" aria-hidden="true">降順</span></th>
- <th>詳細<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('purchased_at')" aria-hidden="true">降順</span></th>
- <th>必要<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('purchased_at')" aria-hidden="true">降順</span></th>
+ <th>詳細<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('detail')" aria-hidden="true">降順</span></th>
+ <th>必要<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('needs')" aria-hidden="true">降順</span></th>
  <th>更新日</th>
  <th>編集</th>
  <th>削除</th>

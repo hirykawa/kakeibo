@@ -25,6 +25,8 @@ Route::post('/income', 'IncomeController@Create')->middleware('auth');
 Route::post('/income/edit','IncomeController@Edit')->middleware('auth');
 Route::post('/income/update','IncomeController@Update')->middleware('auth');
 Route::post('/income/destroy','IncomeController@Destroy')->middleware('auth');
+//収入のリストをajaxで返す
+Route::get('/income/ajax/sort', 'SortController@sortIncome')->middleware('auth');
 
 // ログアウトしてホームにリダイレクトする。
 Route::get('/logout', function () {
