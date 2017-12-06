@@ -89,11 +89,11 @@ class GreetingController extends Controller
         $need_outcome_count = 0;
         $not_need_outcome = 0;
         $not_need_outcome_count = 0;
-        $start = Carbon::createFromDate($year, $month, 1);
-        $end = Carbon::createFromDate($year, $month, 31);
+        $start = Carbon::create($year, $month, 1,00,00,00);
+        $end = Carbon::create($year, $month, 31,23,59,59);
         $total_outcomes = App\kakeibo::where('user_id', $user_id)->get();
         foreach ($total_outcomes as $outcome) {
-            if($outcome->purchased_at >= $start && $outcome->purchased_at <= $end){
+            if(Carbon::parse($outcome->purchased_at) >= $start && Carbon::parse($outcome->purchased_at) <= $end){
                 if($outcome->needs == 1){
                     $need_outcome += $outcome->price;
                     $need_outcome_count += 1;
@@ -130,11 +130,11 @@ class GreetingController extends Controller
         $total_income = 0;
         $month = date('n');
         $year = date('Y');
-        $start = Carbon::createFromDate($year, $month, 1);
-        $end = Carbon::createFromDate($year, $month, 31);
+        $start = Carbon::create($year, $month, 1,00,00,00);
+        $end = Carbon::create($year, $month, 31,23,59,59);
         $total_incomes = App\Income::where('user_id', $user_id)->get();
         foreach ($total_incomes as $income) {
-            if($income->purchased_at >= $start && $income->purchased_at <= $end){
+            if(Carbon::parse($income->purchased_at) >= $start && Carbon::parse($income->purchased_at) <= $end){
                 $total_income += $income->price;
             }
         }
@@ -149,19 +149,19 @@ class GreetingController extends Controller
         }
         $month = date('n');
         $year = date('Y');
-        $start = Carbon::createFromDate($year, $month, 1);
-        $end = Carbon::createFromDate($year, $month, 31);
+        $start = Carbon::create($year, $month, 1,00,00,00);
+        $end = Carbon::create($year, $month, 31,23,59,59);
         $total_outcomes = App\kakeibo::where('user_id', $user_id)->get();
         if($total_or_title == 'total'){
             foreach ($total_outcomes as $income) {
-                if($income->purchased_at >= $start && $income->purchased_at <= $end){
+                if(Carbon::parse($income->purchased_at) >= $start && Carbon::parse($income->purchased_at) <= $end){
                     $total_outcome += $income->price;
                 }
             }
             return $total_outcome;
         }else if($total_or_title == 'title'){
             foreach ($total_outcomes as $income) {
-                if($income->purchased_at >= $start && $income->purchased_at <= $end){
+                if(Carbon::parse($income->purchased_at) >= $start && Carbon::parse($income->purchased_at) <= $end){
                     $outcomes[$income->title] += $income->price;
                 }
             }
