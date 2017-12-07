@@ -37,7 +37,7 @@ class IncomeController extends Controller
         $id = $request->input('id');
         $data = App\Income::find($id);
         #検索結果をビューに渡す
-        return view('income.edit', ['data' => $data , 'message' => 'レシートの編集をしましょう']);
+        return view('income.edit', ['data' => $data , 'message' => '収入の編集をしましょう']);
     }
 
     public function Update(Request $request){
